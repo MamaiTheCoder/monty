@@ -26,10 +26,11 @@ void get_rotr(stack_t **stack, unsigned int line_number)
 		{
 			last = last->next;
 		}
-		*stack = first->next;
+
+		last->prev->next = NULL;
+		last->prev = NULL;
 		last->next = first;
 		first->prev = last;
-		first->next = NULL;
-		(*stack)->prev = NULL;
+		*stack = last;
 	}
 }
